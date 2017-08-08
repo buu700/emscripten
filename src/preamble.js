@@ -1701,6 +1701,20 @@ function addOnPostRun(cb) {
 }
 {{{ maybeExport('addOnPostRun') }}}
 
+#if ASSERTIONS
+var ASSERTIONS = true;
+#endif
+
+#include "arrayUtils.js"
+{{{ maybeExport('intArrayFromString') }}}
+{{{ maybeExport('intArrayToString') }}}
+
+#if SUPPORT_BASE64_EMBEDDING
+#include "base64Utils.js"
+{{{ maybeExport('intArrayFromBase64') }}}
+{{{ maybeExport('tryParseAsDataURI') }}}
+#endif
+
 // Deprecated: This function should not be called because it is unsafe and does not provide
 // a maximum length limit of how many bytes it is allowed to write. Prefer calling the
 // function stringToUTF8Array() instead, which takes in a maximum length that can be used
